@@ -15,40 +15,65 @@ ACCESS_TOKEN = os.getenv("META_ACCESS_TOKEN")
 WHATSAPP_TOKEN = os.getenv("META_WHATSAPP_TOKEN", os.getenv("META_ACCESS_TOKEN"))
 WHATSAPP_PHONE_ID = os.getenv("META_WHATSAPP_PHONE_ID")
 
+INSTAGRAM_LIMIT = 1000
+MESSENGER_LIMIT = 2000
+WHATSAPP_LIMIT = 4096
+
+
+def split_text(text: str, limit: int) -> list[str]:
+    if len(text) <= limit:
+        return [text]
+    parts = []
+    while text:
+        if len(text) <= limit:
+            parts.append(text)
+            break
+        cut = text.rfind("\n", 0, limit)
+        if cut == -1:
+            cut = limit
+        parts.append(text[:cut].strip())
+        text = text[cut:].strip()
+    return parts
+
 
 # ── Funções de envio ──────────────────────────────────────────────────────────
 
 async def send_whatsapp(to: str, text: str):
-    async with httpx.AsyncClient() as client:
-        r = await client.post(
-            f"https://graph.facebook.com/v19.0/{WHATSAPP_PHONE_ID}/messages",
-            headers={"Authorization": f"Bearer {WHATSAPP_TOKEN}"},
-            json={
-                "messaging_product": "whatsapp",
-                "to": to,
-                "type": "text",
-                "text": {"body": text},
-            },
-        )
-        print(f"[WhatsApp] send to {to}: {r.status_code} {r.text}")
+    for part in split_text(text, WHATSAPP_LIMIT):
+        async with httpx.AsyncClient() as client:
+            r = await client.post(
+                f"https://graph.facebook.com/v19.0/{WHATSAPP_PHONE_ID}/messages",
+                headers={"Authorization": f"Bearer {WHATSAPP_TOKEN}"},
+                json={
+                    "messaging_product": "whatsapp",
+                    "to": to,
+                    "type": "text",
+                    "text": {"body": part},
+                },
+            )
+            print(f"[WhatsApp] {r.status_code} → {r.text[:120]}")
 
 
 async def send_messenger(recipient_id: str, text: str):
-    async with httpx.AsyncClient() as client:
-        await client.post(
-            "https://graph.facebook.com/v19.0/me/messages",
-            params={"access_token": ACCESS_TOKEN},
-            json={"recipient": {"id": recipient_id}, "message": {"text": text}},
-        )
+    for part in split_text(text, MESSENGER_LIMIT):
+        async with httpx.AsyncClient() as client:
+            r = await client.post(
+                "https://graph.facebook.com/v19.0/me/messages",
+                params={"access_token": ACCESS_TOKEN},
+                json={"recipient": {"id": recipient_id}, "message": {"text": part}},
+            )
+            print(f"[Messenger] {r.status_code} → {r.text[:120]}")
 
 
 async def send_instagram(recipient_id: str, text: str):
-    async with httpx.AsyncClient() as client:
-        await client.post(
-            "https://graph.facebook.com/v19.0/me/messages",
-            params={"access_token": ACCESS_TOKEN},
-            json={"recipient": {"id": recipient_id}, "message": {"text": text}},
-        )
+    for part in split_text(text, INSTAGRAM_LIMIT):
+        async with httpx.AsyncClient() as client:
+            r = await client.post(
+                "https://graph.facebook.com/v19.0/me/messages",
+                params={"access_token": ACCESS_TOKEN},
+                json={"recipient": {"id": recipient_id}, "message": {"text": part}},
+            )
+            print(f"[Instagram] {r.status_code} → {r.text[:120]}")
 
 
 # ── Webhook ───────────────────────────────────────────────────────────────────

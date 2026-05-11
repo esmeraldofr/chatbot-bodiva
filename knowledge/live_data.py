@@ -47,18 +47,14 @@ async def fetch_live_market_data() -> str:
 
     for typology, items in by_type.items():
         label = type_labels.get(typology, typology)
-        lines.append(f"\n**{label}:**")
+        lines.append(f"\n{label}:")
         for item in items:
             symbol = item.get("symbol", "—")
             price = item.get("price")
             coupon = item.get("couponRate")
-            maturity = item.get("maturityDate", "")[:10] if item.get("maturityDate") else "—"
-
             price_str = f"{price:.2f} AOA" if price is not None else "—"
-            coupon_str = f" | Taxa: {coupon}%" if coupon else ""
-            maturity_str = f" | Maturidade: {maturity}" if maturity != "—" else ""
-
-            lines.append(f"  • {symbol}: {price_str}{coupon_str}{maturity_str}")
+            coupon_str = f" ({coupon}%)" if coupon else ""
+            lines.append(f"  {symbol}: {price_str}{coupon_str}")
 
     lines.append(f"\n_Fonte: BODIVA — www.bodiva.ao_")
     return "\n".join(lines)
