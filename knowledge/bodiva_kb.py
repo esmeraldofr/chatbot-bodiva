@@ -36,23 +36,23 @@ A BODIVA gere os Mercados Regulamentados (Mercado de Balcão Organizado e Bolsa)
 ## Órgãos Sociais
 
 ### Mesa da Assembleia Geral
-- **Francisco Maria** — Presidente (Economista, Mestrado pela Universidade de Essex, 1995)
-- **Carlos Pinto** — Vice-Presidente (Direito, Mestrado em Direito Comercial, Coimbra 2008)
-- **Saidy Fernando** — Secretário (Direito, Mestrado Law and Management, ULisboa 2022)
+- **Francisco Maria** — Presidente
+- **Carlos Pinto** — Vice-Presidente
+- **Saidy Fernando** — Secretário
 
 ### Conselho de Administração
-- **Valentina Filipe** — Presidente (Economista, Berlim 1986; ex-Secretária de Estado das Finanças 2010-2017; ex-Fundo Soberano de Angola 2018-2022; nomeada PCА em Setembro 2022)
-- **Cristina Lourenço** — Presidente da Comissão Executiva (Gestão LSE 2012; Mestrado Gestão de Investimentos Pace University; na BODIVA desde 2014; PCE desde Março 2025)
-- **Dilson Gaspar** — Administrador Executivo (Economia e Gestão UCAN; MBA Católica Business School; responsável por Liquidação, Custódia e Sistemas de TI)
-- **Kalussevico Miguel** — Administrador Executivo (Direito UAN; responsável pelo Departamento Jurídico, Regulatório e Recursos Humanos)
-- **Rodrigo Kinsukulu** — Administrador Não Executivo (Gestão Financeira University of South Africa; Mestrado Gestão Bancária; Director de Mercados de Capitais no Standard Bank Angola)
-- **Cleiton Barros** — Administrador Executivo (Contabilidade UAN; Pós-graduação ISEG Lisboa; responsável por Finanças, Comunicação e Intercâmbio)
-- **Natália de Matos (Jesus)** — Administradora Executiva (Informática de Gestão UPRA; na BODIVA desde 2014; responsável por Liquidação, Custódia e Sistemas de TI)
+- **Valentina Filipe** — Presidente do Conselho de Administração (nomeada em Setembro 2022)
+- **Cristina Lourenço** — Presidente da Comissão Executiva (desde Março 2025)
+- **Dilson Gaspar** — Administrador Executivo (Liquidação, Custódia e Sistemas de TI)
+- **Kalussevico Miguel** — Administrador Executivo (Jurídico, Regulatório e Recursos Humanos)
+- **Rodrigo Kinsukulu** — Administrador Não Executivo
+- **Cleiton Barros** — Administrador Executivo (Finanças, Comunicação e Intercâmbio)
+- **Natália de Matos** — Administradora Executiva (Liquidação, Custódia e Sistemas de TI)
 
 ### Conselho Fiscal
-- **Gualberto Campos** — Presidente (Economia, Universidade de Saint-Etienne de Paris; Mestrado Columbia Nova Iorque 1996)
-- **Adebayo Vunge** — Vogal (Comunicação Social, ISPRA)
-- **Zuraine Figueira** — Vogal (Contabilidade e Administração, UCAN)
+- **Gualberto Campos** — Presidente
+- **Adebayo Vunge** — Vogal
+- **Zuraine Figueira** — Vogal
 
 ## Como Investir na BODIVA
 Os mercados geridos pela BODIVA oferecem a investidores particulares e institucionais a oportunidade de rentabilizarem as suas poupanças pela compra e venda de valores mobiliários.

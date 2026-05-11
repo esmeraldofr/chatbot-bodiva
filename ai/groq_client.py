@@ -25,15 +25,12 @@ _history: "Dict[str, List[dict]]" = defaultdict(list)
 
 
 async def chat_async(user_id: str, message: str) -> str:
-    history = _history[user_id]
-
-    # Injectar dados ao vivo se for pergunta sobre mercado
-    user_content = message
+    # Perguntas de mercado/cotações — responder directamente com dados ao vivo
     if is_market_query(message):
-        live_data = await fetch_live_market_data()
-        user_content = f"{message}\n\n[DADOS AO VIVO DO MERCADO BODIVA]\n{live_data}"
+        return await fetch_live_market_data()
 
-    history.append({"role": "user", "content": user_content})
+    history = _history[user_id]
+    history.append({"role": "user", "content": message})
 
     if len(history) > MAX_HISTORY * 2:
         history = history[-(MAX_HISTORY * 2):]
@@ -46,8 +43,6 @@ async def chat_async(user_id: str, message: str) -> str:
     )
 
     reply = response.choices[0].message.content
-    # Guardar no histórico a mensagem original (sem dados ao vivo)
-    history[-1] = {"role": "user", "content": message}
     history.append({"role": "assistant", "content": reply})
     return reply
 
