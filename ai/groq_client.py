@@ -18,7 +18,7 @@ MODEL = "llama-3.3-70b-versatile"
 MAX_HISTORY = 10  # mensagens por conversa
 
 # histórico em memória: {platform_user_id: [messages]}
-_history: dict[str, List[dict]] = defaultdict(list)
+_history: "Dict[str, List[dict]]" = defaultdict(list)
 
 
 def chat(user_id: str, message: str) -> str:
