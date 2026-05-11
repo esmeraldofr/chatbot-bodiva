@@ -31,7 +31,7 @@ async def telegram_webhook(request: Request):
         return {"ok": True}
 
     if text:
-        reply = chat(user_id, text)
+        reply = await chat(user_id, text)
         await send_message(chat_id, reply)
 
     return {"ok": True}

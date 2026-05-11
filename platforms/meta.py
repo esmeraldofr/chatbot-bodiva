@@ -77,7 +77,7 @@ async def meta_webhook(request: Request):
                     sender = msg["from"]
                     text = msg["text"]["body"]
                     user_id = f"whatsapp_{sender}"
-                    reply = chat(user_id, text)
+                    reply = await chat(user_id, text)
                     await send_whatsapp(sender, reply)
 
         # Messenger / Instagram
@@ -89,7 +89,7 @@ async def meta_webhook(request: Request):
 
             if sender_id and text:
                 user_id = f"{platform}_{sender_id}"
-                reply = chat(user_id, text)
+                reply = await chat(user_id, text)
                 if platform == "instagram":
                     await send_instagram(sender_id, reply)
                 else:

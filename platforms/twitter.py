@@ -58,7 +58,7 @@ async def poll_mentions(interval: int = 60):
                 author_id = tweet["author_id"]
                 text = tweet["text"]
                 user_id = f"twitter_{author_id}"
-                reply = chat(user_id, text)
+                reply = await chat(user_id, text)
                 await reply_tweet(tweet_id, author_id, reply)
                 _last_id = tweet_id
         except Exception as e:

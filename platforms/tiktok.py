@@ -43,7 +43,7 @@ async def tiktok_webhook(request: Request):
 
             if text and video_id and comment_id:
                 user_id = f"tiktok_{author_id}"
-                reply = chat(user_id, text)
+                reply = await chat(user_id, text)
                 await post_comment_reply(video_id, comment_id, reply[:150])  # TikTok limita comentários
 
     return {"status": "ok"}
